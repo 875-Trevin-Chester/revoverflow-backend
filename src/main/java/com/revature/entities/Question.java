@@ -41,6 +41,8 @@ public class Question {
 	@Column(name = "user_id")
 	private int userID;
 
+	private String location;
+	
 	public int getId() {
 		return id;
 	}
@@ -103,6 +105,16 @@ public class Question {
 
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	
+	
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	@Override
@@ -187,6 +199,21 @@ public class Question {
 	public Question() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Question(int id, Integer acceptedId, @NotNull String title,
+			@NotNull String content, LocalDateTime creationDate,
+			LocalDateTime editDate, boolean status, int userID, String location) {
+		super();
+		this.id = id;
+		this.acceptedId = acceptedId;
+		this.title = title;
+		this.content = content;
+		this.creationDate = creationDate;
+		this.editDate = editDate;
+		this.status = status;
+		this.userID = userID;
+		this.location = location;
 	}
 
 }

@@ -124,4 +124,8 @@ public class QuestionService {
 		return questionRepository.getQuestionsByStatus(pageable, status);
 	}
 	
+	public Page<Question> getAllQuestionsByLocation(Pageable pageable, String location){
+		return questionRepository.getQuestionsByLocation(pageable, location);		
+	}
+	
 }

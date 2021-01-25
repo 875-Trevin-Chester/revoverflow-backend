@@ -98,5 +98,13 @@ public class QuestionController {
 		return questionService.findById(id);
 	}
 	
-		
+	/** @author david
+	 * 
+	 */
+	@GetMapping("/location/{location}")
+	@PreAuthorize("hasAuthority('user')")
+	public Page<Question> getQuestionsByLocation(Pageable pageable, @PathVariable String location) {
+		return questionService.getAllQuestionsByLocation(pageable, location);
+//		return null;
+	}
 }
