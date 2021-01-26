@@ -13,12 +13,17 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "questions")
 public class Question {
+	
+	/*
+	 * 
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	// Changed to wrapper class on line 23 so that it could hold a null/0 value
+	//looks to be id of admin who approved the answer to this question
 	@Column(name = "accepted_id")
 	private Integer acceptedId;
 
@@ -32,6 +37,8 @@ public class Question {
 	@Column(name = "creation_date")
 	private LocalDateTime creationDate;
 
+	//possibly think about modifying/removing this field
+	//is this actively used in this iteration?
 	@Column(name = "edit_date")
 	private LocalDateTime editDate;
 
