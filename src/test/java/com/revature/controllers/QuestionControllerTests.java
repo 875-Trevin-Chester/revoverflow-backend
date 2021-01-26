@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -156,8 +157,8 @@ public class QuestionControllerTests {
         Question questions, testQuestions;
         questions = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 1);
         testQuestions = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, true, 1);
-
-        when(questionService.updateQuestionStatus(Mockito.any(Question.class), Mockito.anyInt())).thenReturn(testQuestions);
+       
+        ///when(questionService.updateQuestionStatus(Mockito.any(Question.class), Mockito.anyInt())).thenReturn(testQuestions);
         String toUpdate = mapper.writeValueAsString(questions);
         org.springframework.test.web.servlet.MvcResult result = mvc.perform(MockMvcRequestBuilders.put("/questions/status")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -166,7 +167,34 @@ public class QuestionControllerTests {
                 ).andReturn();
 
         assertEquals(200, result.getResponse().getStatus());
+        System.out.println("update status");
+        System.out.println(result.getResponse().getContentAsString());
     }
+	
+
+/**
+ * @author corbi
+ * @return Checks to see if the update faq endpoint is able to be accessed.
+ */
+	@Test
+	@WithMockUser(username = "admin@rss.com", password = "Password123!", authorities = "admin")
+	public void updateIsFaq() throws Exception {
+		Question question;
+		question = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1);
+		assertTrue(question.isFaq());
+		question = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 1);
+		assertFalse(question.isFaq());
+		when(questionService.updateQuestionisFaq(Mockito.any(Question.class))).thenReturn(new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1));
+		String readiedQuestionString = mapper.writeValueAsString(question);
+		 org.springframework.test.web.servlet.MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/questions/faq")
+	                .contentType(MediaType.APPLICATION_JSON_UTF8)
+	                .content(readiedQuestionString)
+	                .accept(MediaType.APPLICATION_JSON_UTF8)
+	                ).andReturn();
+		 assertEquals(200, result.getResponse().getStatus());
+		 System.out.println("update isFaq");
+		 System.out.println(result.getResponse().getContentAsString());
+	}
 
 	/**@author James
 	 * @return Tests to ensure that the Question Controller method for the update status method works.
@@ -225,7 +253,7 @@ public class QuestionControllerTests {
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 ).andReturn();
         String content = result.getResponse().getContentAsString();
-        System.out.println("result = " + content);
+        ///System.out.println("result = " + content);
         assertEquals(200, result.getResponse().getStatus());
 	}
     

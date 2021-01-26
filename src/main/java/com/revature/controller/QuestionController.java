@@ -18,6 +18,8 @@ import com.revature.entities.Question;
 import com.revature.services.QuestionService;
 
 
+
+
 @RestController
 @RequestMapping("/questions")
 
@@ -99,6 +101,11 @@ public class QuestionController {
 		return questionService.findById(id);
 	}
 	
+	
+	/**
+	 * @author Corbin Creedon
+	 *	@return This is the make a question a faq endpoint, it's sole purpose is to update the model of questions to make them have true in isFaq
+	 */
 	@PostMapping("/faq")
 	@PreAuthorize("hasAuthority('admin')")
 	public Question updateisFaq(@RequestBody Question question) {
