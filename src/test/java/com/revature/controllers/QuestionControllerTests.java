@@ -158,7 +158,7 @@ public class QuestionControllerTests {
         questions = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 1);
         testQuestions = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, true, 1);
        
-        ///when(questionService.updateQuestionStatus(Mockito.any(Question.class), Mockito.anyInt())).thenReturn(testQuestions);
+        when(questionService.updateQuestionStatus(Mockito.any(Question.class), Mockito.anyInt())).thenReturn(testQuestions);
         String toUpdate = mapper.writeValueAsString(questions);
         org.springframework.test.web.servlet.MvcResult result = mvc.perform(MockMvcRequestBuilders.put("/questions/status")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -181,9 +181,9 @@ public class QuestionControllerTests {
 	public void updateIsFaq() throws Exception {
 		Question question;
 		question = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1);
-		assertTrue(question.isFaq());
+		assertTrue(question.getIsFaq());
 		question = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 1);
-		assertFalse(question.isFaq());
+		assertFalse(question.getIsFaq());
 		when(questionService.updateQuestionisFaq(Mockito.any(Question.class))).thenReturn(new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1));
 		String readiedQuestionString = mapper.writeValueAsString(question);
 		 org.springframework.test.web.servlet.MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/questions/faq")
