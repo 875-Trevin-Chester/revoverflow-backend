@@ -111,12 +111,19 @@ public class QuestionService {
 		return save(question);
 	}
 	
+	
+	
   /** @Author Natasha Poser
    * @return retrieves a specific question by using it's specific ID */ 
 	public Question findById(int id) {
 		return questionRepository.findById(id)
 				// If no question is found by the particular ID then HTTP Status is provided. 
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+	}
+	
+	public Question updateQuestionisFaq(Question question) {
+		question.setFaq(true);
+		return questionRepository.save(question);
 	}
 
 	/**@author ken*/

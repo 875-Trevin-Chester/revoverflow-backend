@@ -98,5 +98,10 @@ public class QuestionController {
 		return questionService.findById(id);
 	}
 	
+	@PostMapping("/faq")
+	@PreAuthorize("hasAuthority('admin')")
+	public Question updateisFaq(@RequestBody Question question) {
+		return questionService.updateQuestionisFaq(question);
+	}
 		
 }
