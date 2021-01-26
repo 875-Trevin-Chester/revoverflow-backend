@@ -184,7 +184,7 @@ public class QuestionControllerTests {
 		assertTrue(question.isFaq());
 		question = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 1);
 		assertFalse(question.isFaq());
-		///when(questionService.updateQuestionisFaq(Mockito.any(Question.class))).thenReturn(new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1));
+		when(questionService.updateQuestionisFaq(Mockito.any(Question.class))).thenReturn(new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, true, 1));
 		String readiedQuestionString = mapper.writeValueAsString(question);
 		 org.springframework.test.web.servlet.MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/questions/faq")
 	                .contentType(MediaType.APPLICATION_JSON_UTF8)
