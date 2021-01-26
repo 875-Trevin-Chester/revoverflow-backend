@@ -22,4 +22,13 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	@Query("FROM Question s WHERE :location = s.location")
 	Page<Question> getQuestionsByLocation(Pageable pageable, String location);
 	
+	/**
+	 * This method gets all Questions with user id and location
+	 * @Author David Lyu
+	 * @param pageable
+	 * @param userID
+	 * @param location
+	 * @return
+	 */
+	Page<Question> getQuestionsByUserIDAndLocation(Pageable pageable, int userID,String location);
 }

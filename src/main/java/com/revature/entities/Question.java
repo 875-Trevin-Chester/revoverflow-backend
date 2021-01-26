@@ -174,7 +174,7 @@ public class Question {
 			return false;
 		return true;
 	}
-
+	//only kept for testing to not break -David
 	public Question(int id, Integer acceptedId, @NotNull String title,
 			@NotNull String content, LocalDateTime creationDate,
 			LocalDateTime editDate, boolean status, int userID) {
@@ -201,6 +201,18 @@ public class Question {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * This method includes location, and is used for the Jackson to put all the inputs inside
+	 * @param id
+	 * @param acceptedId
+	 * @param title
+	 * @param content
+	 * @param creationDate
+	 * @param editDate
+	 * @param status
+	 * @param userID
+	 * @param location
+	 */
 	public Question(int id, Integer acceptedId, @NotNull String title,
 			@NotNull String content, LocalDateTime creationDate,
 			LocalDateTime editDate, boolean status, int userID, String location) {
