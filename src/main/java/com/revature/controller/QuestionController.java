@@ -65,6 +65,7 @@ public class QuestionController {
 	@PostMapping
 	@PreAuthorize("hasAuthority('user')")
 	public Question saveQuestion(@RequestBody Question question) {
+		System.out.println(question);
 		return questionService.save(question);
 	}
 
