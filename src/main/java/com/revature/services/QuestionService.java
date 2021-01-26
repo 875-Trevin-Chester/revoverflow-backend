@@ -127,7 +127,7 @@ public class QuestionService {
 	 * @return returns updated question with isFaq set to true
 	 */
 	public Question updateQuestionisFaq(Question question) {
-		question.setFaq(true);
+		question.setIsFaq(true);
 		return questionRepository.save(question);
 	}
 

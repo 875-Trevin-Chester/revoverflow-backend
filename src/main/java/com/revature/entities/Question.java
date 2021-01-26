@@ -46,7 +46,7 @@ public class Question {
 	private boolean status;
 	
 	///this is for FAQ
-	private boolean isFaq = false;
+	private boolean isFaq;
 
 	// add the not null check in the service layer
 	@Column(name = "user_id")
@@ -116,11 +116,11 @@ public class Question {
 		this.userID = userID;
 	}
 
-	public boolean isFaq() {
+	public boolean getIsFaq() {
 		return isFaq;
 	}
 
-	public void setFaq(boolean isFaq) {
+	public void setIsFaq(boolean isFaq) {
 		this.isFaq = isFaq;
 	}
 	
