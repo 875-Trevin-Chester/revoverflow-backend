@@ -143,7 +143,6 @@ public class QuestionService {
 	 * @return a Page Object of Questions.
 	 */
 	public Page<Question> getUsersQuestionByLocationAndId(Pageable pageable, String location, int userId) {
-		System.out.println("inside service");
 		return questionRepository.getQuestionsByUserIDAndLocation(pageable, userId, location);
 	}
 	

@@ -123,7 +123,6 @@ public class QuestionController {
 	@GetMapping("/location/{userId}/{location}")
 	@PreAuthorize("hasAuthority('user')")
 	public Page<Question> getUserQuestionsByLocationandId(Pageable pageable, @PathVariable String location, @PathVariable int userId) {
-		System.out.println(userId + "stuff  " + location);
 		return questionService.getUsersQuestionByLocationAndId(pageable, location, userId);
 	}
 }
