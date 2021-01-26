@@ -22,4 +22,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	@Query("FROM Question s WHERE :location = s.location")
 	Page<Question> getQuestionsByLocation(Pageable pageable, String location);
 	
+//	@Query("FROM Question s WHERE :location = s.location AND :userID = s.user_id")
+	Page<Question> getQuestionsByUserIDAndLocation(Pageable pageable, int userID,String location);
 }

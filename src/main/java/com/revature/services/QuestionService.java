@@ -124,8 +124,27 @@ public class QuestionService {
 		return questionRepository.getQuestionsByStatus(pageable, status);
 	}
 	
+	/**
+	 * @author david lyu
+	 * @param pageable The object from spring data that helps with pagination in the front end.
+	 * @param location The location from the json file of all locations user can input
+	 * @return a Page Object of all the Question Objects specified for the location.
+	 */
 	public Page<Question> getAllQuestionsByLocation(Pageable pageable, String location){
 		return questionRepository.getQuestionsByLocation(pageable, location);		
+	}
+	
+	/**
+	 * @author david
+	 * 	This method gets called in the controller for getting all Questions from a specified User.
+	 * @param pageable an Object from Spring Data that helps with pagination in the front end.
+	 * @param location location of the specified query, if null then it will get Revature questions
+	 * @param userId The id of the current user logged in
+	 * @return a Page Object of Questions.
+	 */
+	public Page<Question> getUsersQuestionByLocationAndId(Pageable pageable, String location, int userId) {
+		System.out.println("inside service");
+		return questionRepository.getQuestionsByUserIDAndLocation(pageable, userId, location);
 	}
 	
 }

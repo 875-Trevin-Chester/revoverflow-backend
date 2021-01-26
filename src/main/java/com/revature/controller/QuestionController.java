@@ -98,13 +98,32 @@ public class QuestionController {
 		return questionService.findById(id);
 	}
 	
-	/** @author david
-	 * 
+	/** @author david lyu
+	 *  This method is called in the front-end to get all questions for a specific location, if location is null it will assume
+	 *  the questions are not location based questions but revature based.
+	 *  @param pageable: The inputs of the endpoint (size(10):int and page:int).
+	 *  @param location: The location to get all Questions in the query
+	 *  @return This gets all the questions of a specified location, or revature based questions and returns it in a Page Object, which
+	 *  	jackson should parse into JSON.
 	 */
 	@GetMapping("/location/{location}")
 	@PreAuthorize("hasAuthority('user')")
 	public Page<Question> getQuestionsByLocation(Pageable pageable, @PathVariable String location) {
 		return questionService.getAllQuestionsByLocation(pageable, location);
-//		return null;
+	}
+	
+	/**
+	 * @author david lyu
+	 * @param pageable: The inputs of the endpoint (size(10): int and page: int).
+	 * @param location: the location in query to find questions
+	 * @param userId: the user's id in query to specify the user's question to a particular location
+	 * @return This get's all the questions of a specified location for a user, or revature based questions and returns it in a Page Object,
+	 * 		which jackson shouls parse into JSON.
+	 */
+	@GetMapping("/location/{userId}/{location}")
+	@PreAuthorize("hasAuthority('user')")
+	public Page<Question> getUserQuestionsByLocationandId(Pageable pageable, @PathVariable String location, @PathVariable int userId) {
+		System.out.println(userId + "stuff  " + location);
+		return questionService.getUsersQuestionByLocationAndId(pageable, location, userId);
 	}
 }
