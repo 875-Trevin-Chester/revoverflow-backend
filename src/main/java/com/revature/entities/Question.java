@@ -39,7 +39,7 @@ public class Question {
 	private boolean status;
 	
 	///this is for FAQ
-	private boolean isFaq;
+	private boolean isFaq = false;
 
 	// add the not null check in the service layer
 	@Column(name = "user_id")
@@ -214,8 +214,8 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", acceptedId=" + acceptedId + ", title=" + title + ", content=" + content
-				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", userID="
-				+ userID + "]";
+				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", isFaq="
+				+ isFaq + ", userID=" + userID + "]";
 	}
 
 	public Question() {

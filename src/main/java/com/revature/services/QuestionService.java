@@ -16,6 +16,7 @@ import com.revature.DTOs.RSSAccountDTO;
 import com.revature.repositories.AnswerRepository;
 import com.revature.repositories.QuestionRepository;
 
+
 @Service
 public class QuestionService {
 
@@ -121,6 +122,10 @@ public class QuestionService {
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
+	/**
+	 * @author Corbin Creedon
+	 * @return returns updated question with isFaq set to true
+	 */
 	public Question updateQuestionisFaq(Question question) {
 		question.setFaq(true);
 		return questionRepository.save(question);
