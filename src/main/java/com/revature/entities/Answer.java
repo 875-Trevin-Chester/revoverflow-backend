@@ -18,6 +18,9 @@ public class Answer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	/*
+	 * Are these foreign keys?! Do the values get passed in from the front end?
+	 */
 	@Column(name = "user_id")
 	private int userId;
 
