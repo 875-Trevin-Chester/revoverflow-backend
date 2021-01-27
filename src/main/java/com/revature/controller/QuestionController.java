@@ -16,6 +16,8 @@ import com.revature.entities.Question;
 import com.revature.services.QuestionService;
 
 
+
+
 @RestController
 @RequestMapping("/questions")
 
@@ -63,6 +65,7 @@ public class QuestionController {
 	@PostMapping
 	@PreAuthorize("hasAuthority('user')")
 	public Question saveQuestion(@RequestBody Question question) {
+		System.out.println(question);
 		return questionService.save(question);
 	}
 
@@ -125,4 +128,16 @@ public class QuestionController {
 		if(location.equals("null")) location = null;
 		return questionService.getUsersQuestionByLocationAndId(pageable, location, userId);
 	}
+
+	
+	/**
+	 * @author Corbin Creedon
+	 *	@return This is the make a question a faq endpoint, it's sole purpose is to update the model of questions to make them have true in isFaq
+	 */
+	@PostMapping("/faq")
+	@PreAuthorize("hasAuthority('admin')")
+	public Question updateisFaq(@RequestBody Question question) {
+		return questionService.updateQuestionisFaq(question);
+	}
+		
 }

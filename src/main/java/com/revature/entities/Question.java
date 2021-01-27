@@ -13,12 +13,17 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "questions")
 public class Question {
+	
+	/*
+	 * 
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	// Changed to wrapper class on line 23 so that it could hold a null/0 value
+	//looks to be id of admin who approved the answer to this question
 	@Column(name = "accepted_id")
 	private Integer acceptedId;
 
@@ -32,10 +37,16 @@ public class Question {
 	@Column(name = "creation_date")
 	private LocalDateTime creationDate;
 
+	//possibly think about modifying/removing this field
+	//is this actively used in this iteration?
 	@Column(name = "edit_date")
 	private LocalDateTime editDate;
 
+	///this is for approved
 	private boolean status;
+	
+	///this is for FAQ
+	private boolean isFaq;
 
 	// add the not null check in the service layer
 	@Column(name = "user_id")
@@ -117,6 +128,15 @@ public class Question {
 		this.location = location;
 	}
 
+	public boolean getIsFaq() {
+		return isFaq;
+	}
+
+	public void setIsFaq(boolean isFaq) {
+		this.isFaq = isFaq;
+	}
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -126,6 +146,7 @@ public class Question {
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((editDate == null) ? 0 : editDate.hashCode());
 		result = prime * result + id;
+		result = prime * result + (isFaq ? 1231 : 1237);
 		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + userID;
@@ -163,6 +184,8 @@ public class Question {
 			return false;
 		if (id != other.id)
 			return false;
+		if (isFaq != other.isFaq)
+			return false;
 		if (status != other.status)
 			return false;
 		if (title == null) {
@@ -188,12 +211,30 @@ public class Question {
 		this.status = status;
 		this.userID = userID;
 	}
+	
+	
+
+	public Question(int id, Integer acceptedId, @NotNull String title, @NotNull String content,
+			LocalDateTime creationDate, LocalDateTime editDate, boolean status, boolean isFaq, int userID) {
+		super();
+		this.id = id;
+		this.acceptedId = acceptedId;
+		this.title = title;
+		this.content = content;
+		this.creationDate = creationDate;
+		this.editDate = editDate;
+		this.status = status;
+		this.isFaq = isFaq;
+		this.userID = userID;
+	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", acceptedId=" + acceptedId + ", title=" + title + ", content=" + content
-				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", userID="
-				+ userID + "]";
+				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", isFaq="
+				+ isFaq + ", userID=" + userID + "]";
 	}
 
 	public Question() {

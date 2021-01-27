@@ -16,6 +16,7 @@ import com.revature.DTOs.RSSAccountDTO;
 import com.revature.repositories.AnswerRepository;
 import com.revature.repositories.QuestionRepository;
 
+
 @Service
 public class QuestionService {
 
@@ -111,12 +112,23 @@ public class QuestionService {
 		return save(question);
 	}
 	
+	
+	
   /** @Author Natasha Poser
    * @return retrieves a specific question by using it's specific ID */ 
 	public Question findById(int id) {
 		return questionRepository.findById(id)
 				// If no question is found by the particular ID then HTTP Status is provided. 
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+	}
+	
+	/**
+	 * @author Corbin Creedon
+	 * @return returns updated question with isFaq set to true
+	 */
+	public Question updateQuestionisFaq(Question question) {
+		question.setIsFaq(true);
+		return questionRepository.save(question);
 	}
 
 	/**@author ken*/

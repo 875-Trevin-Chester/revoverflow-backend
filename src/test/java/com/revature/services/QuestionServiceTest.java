@@ -49,4 +49,14 @@ public class QuestionServiceTest {
 		//System.out.println(q3);
 		
 	}
+	
+	@Test
+	public void updateQuestionIsFaq() {
+		Question testQuestion = new Question(1, 1, "title", "content", LocalDateTime.MIN, LocalDateTime.MIN, true, 1);
+		Question expectedResult = new Question(1, 1, "title", "content", LocalDateTime.MIN, LocalDateTime.MIN, true, true ,1);
+		Mockito.when(questionRepository.save(Mockito.any(Question.class))).thenReturn(expectedResult);
+		
+		Question resultQuestion = questionService.updateQuestionisFaq(testQuestion);
+		assertEquals(expectedResult, resultQuestion);
+	}
 }
