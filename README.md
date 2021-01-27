@@ -22,7 +22,6 @@ RevOverflow is a site dedicated to providing support to technical problems encou
   - PostgreSQL 42.2.8
 
 # Features
-- Login authentification with FireBase to ensure logins are appropriately handled.
 - Secure route guarding with JWT to ensure navigation to a requested route is permitted.
 - Employment of a RESTful API to handle HTTP requests with GET, PUT, POST, and DELETE.
 - Utilizes JpaRepository within SpringData for streamlined data access with an H2 database.
@@ -30,7 +29,7 @@ RevOverflow is a site dedicated to providing support to technical problems encou
 
 # Getting Started
 - git clone <https://github.com/875-Trevin-Chester/revoverflow-backend.git>
-- The above git command will bring the repository into your specified directory
+  - The above git command will bring the repository into your specified directory.
 
 # Usage
 - Download Java version 8 to some location on the local machine.
