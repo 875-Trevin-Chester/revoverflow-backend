@@ -183,4 +183,9 @@ public class QuestionServiceTest {
 		assertTrue(q3.isStatus());
 	}
 	
+	@Test
+	public void getQuestionsByLocation() {
+		
+	}
+	
 }
