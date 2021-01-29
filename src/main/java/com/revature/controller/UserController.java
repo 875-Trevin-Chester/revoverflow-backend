@@ -33,6 +33,11 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 	
+	/**
+	 * @author Andrew Kellar
+	 * @param id this is the user's Id
+	 * @return User this return the whole user object for profile view purposes
+	 */
 	@GetMapping("/profile/{id}")
 	@PreAuthorize("hasAuthority('user')")
 	public User getProfileById(@PathVariable int id) {

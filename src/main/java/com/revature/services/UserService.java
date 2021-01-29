@@ -68,9 +68,14 @@ public class UserService {
 		return auths;
 		
 	}
+	
+	/**
+	 * @author Andrew Kellar
+	 * @param id this is the user's Id
+	 * @return User this gets the whole user object
+	 */
 	public User getProfileById(int id) {
-		return userRepository.findByUserID(id);
-		
+		return userRepository.findByUserID(id);	
 	}
 
 }
