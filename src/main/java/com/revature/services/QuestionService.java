@@ -146,6 +146,11 @@ public class QuestionService {
 		return questionRepository.getQuestionsByLocation(pageable, location);		
 	}
 	
+	public Page<Question> getAllQuestionsByQuestionType(Pageable pageable, String type){
+		return questionRepository.getQuestionsByQuestionType(pageable, type);		
+	}
+	
+	
 	/**
 	 * @author david
 	 * 	This method gets called in the controller for getting all Questions from a specified User.
