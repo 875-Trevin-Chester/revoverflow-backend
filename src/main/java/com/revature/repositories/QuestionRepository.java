@@ -21,6 +21,8 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	/**@author david*/
 	Page<Question> getQuestionsByLocation(Pageable pageable, String location);
 	
+	Page<Question> getQuestionsByQuestionType(Pageable pageable, String type);
+	
 	/**
 	 * This method gets all Questions with user id and location
 	 * @Author David Lyu

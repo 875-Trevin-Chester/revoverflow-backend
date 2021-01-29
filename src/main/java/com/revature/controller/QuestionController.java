@@ -114,6 +114,13 @@ public class QuestionController {
 		return questionService.getAllQuestionsByLocation(pageable, location);
 	}
 	
+	@GetMapping("/type/{type}")
+	@PreAuthorize("hasAuthority('user')")
+	public Page<Question> getQuestionsByType(Pageable pageable, @PathVariable String type) {
+		if(type.equals("null")) type = null;
+		return questionService.getAllQuestionsByQuestionType(pageable, type);
+	}
+	
 	/**
 	 * @author david lyu
 	 * @param pageable: The inputs of the endpoint (size(10): int and page: int).
