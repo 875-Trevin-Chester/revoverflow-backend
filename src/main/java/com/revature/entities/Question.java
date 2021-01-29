@@ -54,6 +54,8 @@ public class Question {
 
 	private String location;
 	
+	private String questionType;
+	
 	public int getId() {
 		return id;
 	}
@@ -135,7 +137,14 @@ public class Question {
 	public void setIsFaq(boolean isFaq) {
 		this.isFaq = isFaq;
 	}
-	
+
+	public String getQuestionType() {
+		return questionType;
+	}
+
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
+	}
 
 	@Override
 	public int hashCode() {
@@ -229,6 +238,23 @@ public class Question {
 	}
 	
 	
+
+	public Question(int id, Integer acceptedId, @NotNull String title, @NotNull String content,
+			LocalDateTime creationDate, LocalDateTime editDate, boolean status, boolean isFaq, int userID,
+			String location, String questionType) {
+		super();
+		this.id = id;
+		this.acceptedId = acceptedId;
+		this.title = title;
+		this.content = content;
+		this.creationDate = creationDate;
+		this.editDate = editDate;
+		this.status = status;
+		this.isFaq = isFaq;
+		this.userID = userID;
+		this.location = location;
+		this.questionType = questionType;
+	}
 
 	@Override
 	public String toString() {

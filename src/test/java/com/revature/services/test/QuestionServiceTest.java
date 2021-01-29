@@ -183,9 +183,41 @@ public class QuestionServiceTest {
 		assertTrue(q3.isStatus());
 	}
 	
+	/**
+	 * @author david
+	 */
 	@Test
-	public void getQuestionsByLocation() {
+	public void getAllQuestionsByLocation() {
+		Question q1 = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 12, "UTA");
+		Question q2 = new Question(2,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 12, null);
+		questionService.save(q1);
+		questionService.save(q2);
+		List<Question> listQs = new ArrayList<>();
+		listQs.add(q1);
+		Page<Question> p1 = new PageImpl<Question>(listQs);
+		Pageable pageable = PageRequest.of(1, 10);
+		Mockito.when(questionRepository.getQuestionsByLocation(Mockito.any(Pageable.class), Mockito.anyString())).thenReturn(p1);
+		Page<Question> p2 = questionService.getAllQuestionsByLocation(pageable, "UTA");
+		assertEquals("Testing getting AllQuestionsByLocation", p1.getContent(), p2.getContent());
 		
 	}
 	
+	/*
+	 * @Author david
+	 */
+	@Test
+	public void getUsersQuestionByLocationAndId() {
+		Question q1 = new Question(1,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 12, "UTA");
+		Question q2 = new Question(2,1,"title","content", LocalDateTime.MIN, LocalDateTime.MIN, false, 12, null);
+		questionService.save(q1);
+		questionService.save(q2);
+		int userId = 12;
+		List<Question> listQs = new ArrayList<>();
+		listQs.add(q1);
+		Page<Question> p1 = new PageImpl<Question>(listQs);
+		Pageable pageable = PageRequest.of(1, 10);
+		Mockito.when(questionRepository.getQuestionsByUserIDAndLocation(Mockito.any(Pageable.class), Mockito.anyInt(), Mockito.anyString())).thenReturn(p1);
+		Page<Question> p2 = questionService.getUsersQuestionByLocationAndId(pageable, "UTA", userId);
+		assertEquals("GETTING USERS LOCATION AND ID", p1, p2);
+	}
 }
