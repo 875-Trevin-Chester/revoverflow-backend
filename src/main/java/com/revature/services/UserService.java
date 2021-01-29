@@ -44,9 +44,9 @@ public class UserService {
 				return null;
 			}
 			return null;
-		
-		
+			
 	}
+	
 	public Collection<GrantedAuthority> getAuthority(User u){
 		Collection<GrantedAuthority>auths = new ArrayList<>();
 		Optional<User> optUser = userRepository.findById(u.getUserID());
@@ -66,6 +66,10 @@ public class UserService {
 			}
 		}
 		return auths;
+		
+	}
+	public User getProfileById(int id) {
+		return userRepository.findByUserID(id);
 		
 	}
 
