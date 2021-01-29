@@ -9,5 +9,7 @@ import com.revature.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 	User findByEmail(String string);
+	
+	User findByUserID(int id);
 
 }
