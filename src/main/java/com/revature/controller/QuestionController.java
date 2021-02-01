@@ -110,14 +110,12 @@ public class QuestionController {
 	@GetMapping("/location/{location}")
 	@PreAuthorize("hasAuthority('user')")
 	public Page<Question> getQuestionsByLocation(Pageable pageable, @PathVariable String location) {
-		if(location.equals("null")) location = null;
 		return questionService.getAllQuestionsByLocation(pageable, location);
 	}
 	
 	@GetMapping("/type/{type}")
 	@PreAuthorize("hasAuthority('user')")
 	public Page<Question> getQuestionsByType(Pageable pageable, @PathVariable String type) {
-		if(type.equals("null")) type = null;
 		return questionService.getAllQuestionsByQuestionType(pageable, type);
 	}
 	
@@ -132,10 +130,14 @@ public class QuestionController {
 	@GetMapping("/location/{userId}/{location}")
 	@PreAuthorize("hasAuthority('user')")
 	public Page<Question> getUserQuestionsByLocationandId(Pageable pageable, @PathVariable String location, @PathVariable int userId) {
-		if(location.equals("null")) location = null;
 		return questionService.getUsersQuestionByLocationAndId(pageable, location, userId);
 	}
 
+	@GetMapping("/type/{userId}/{questionType}")
+	@PreAuthorize("hasAuthority('user')")
+	public Page<Question> getUsersQuestionsByTypeandId(Pageable pageable, @PathVariable String questionType, @PathVariable int userId) {
+		return questionService.getAllUsersQuestionByType(pageable, questionType, userId);
+	}
 	
 	/**
 	 * @author Corbin Creedon
