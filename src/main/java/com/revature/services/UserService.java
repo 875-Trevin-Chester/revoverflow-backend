@@ -44,9 +44,9 @@ public class UserService {
 				return null;
 			}
 			return null;
-		
-		
+			
 	}
+	
 	public Collection<GrantedAuthority> getAuthority(User u){
 		Collection<GrantedAuthority>auths = new ArrayList<>();
 		Optional<User> optUser = userRepository.findById(u.getUserID());
@@ -67,6 +67,15 @@ public class UserService {
 		}
 		return auths;
 		
+	}
+	
+	/**
+	 * @author Andrew Kellar
+	 * @param id this is the user's Id
+	 * @return User this gets the whole user object
+	 */
+	public User getProfileById(int id) {
+		return userRepository.findByUserID(id);	
 	}
 
 }
