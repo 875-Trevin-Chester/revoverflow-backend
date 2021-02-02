@@ -37,12 +37,13 @@ public class Question {
 	@Column(name = "creation_date")
 	private LocalDateTime creationDate;
 
-	//possibly think about modifying/removing this field
-	//is this actively used in this iteration?
 	@Column(name = "edit_date")
 	private LocalDateTime editDate;
 
-	///this is for approved
+	/*
+	 * NOT ACTUALLY CERTAIN ABOUT THE PURPOSE OF THIS VARIABLE AS OF RIGHT NOW
+	 */
+	///this is to indicate the 'approval' status of an answer with this question id as foreign key
 	private boolean status;
 	
 	///this is for FAQ
