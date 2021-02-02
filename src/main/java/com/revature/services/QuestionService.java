@@ -156,6 +156,9 @@ public class QuestionService {
 		return questionRepository.getQuestionsByQuestionType(pageable, type);		
 	}
 	
+	public Page<Question> getAllUsersQuestionByType(Pageable pageable, String type, int userId) {
+		return questionRepository.getQuestionsByUserIDAndQuestionType(pageable,userId, type);
+	}
 	
 	/**
 	 * @author david
